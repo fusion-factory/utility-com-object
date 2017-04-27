@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowUtilities", "FlowUtilities\FlowUtilities.csproj", "{1D72CCE5-CE16-43EC-917E-50A985D31C2F}"
 EndProject
@@ -43,6 +43,7 @@ Global
 		{733557B2-83B5-4C83-A59B-D5F2DFD3D966}.Release|x86.ActiveCfg = Release|Any CPU
 		{3CA9606C-CE35-408B-A1A8-57E233614502}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{3CA9606C-CE35-408B-A1A8-57E233614502}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{3CA9606C-CE35-408B-A1A8-57E233614502}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{3CA9606C-CE35-408B-A1A8-57E233614502}.Debug|x86.ActiveCfg = Debug|x86
 		{3CA9606C-CE35-408B-A1A8-57E233614502}.Debug|x86.Build.0 = Debug|x86
 		{3CA9606C-CE35-408B-A1A8-57E233614502}.Release|Any CPU.ActiveCfg = Release|x86

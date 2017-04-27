@@ -62,7 +62,7 @@ namespace FlowUtilities {
 						continue;
 					}
 					else{
-						Parser Parser=new ActiveUp.Net.Mail.Parser();
+						//Parser Parser=new ActiveUp.Net.Mail.Parser();
 						errorNumber=(int)enuErrorNumbers.ParsingMessage;
 						errorDescription="Attempting to parse message "+i.ToString()+" from "+host+" as "+username;
 						Message Msg=Parser.ParseMessage(MessageBytes);

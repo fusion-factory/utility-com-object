@@ -91,8 +91,6 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AS400Stub.cs" />
-    <None Include="AS400.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="LockUtil.cs" />
@@ -105,17 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FlowUtilities.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="cwbx">
-      <Guid>{AD8D8CE0-15D3-11D2-849C-0004AC94E175}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>1</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
