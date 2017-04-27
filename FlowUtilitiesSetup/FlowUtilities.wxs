@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Component Id="FlowUtilities.dll" Guid="{2FBCD68F-FEE0-44FC-98F8-129DE3DC1338}">
+                <Class Id="{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}" Context="InprocServer32" Description="FlowUtilities.Helper" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="FlowUtilities.Helper" Description="FlowUtilities.Helper" />
+                </Class>
+                <Class Id="{59A515E2-658D-30FE-9CF2-8B51A2354A3F}" Context="InprocServer32" Description="FlowUtilities.Encryption" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="FlowUtilities.Encryption" Description="FlowUtilities.Encryption" />
+                </Class>
+                <File Id="FlowUtilities.dll" KeyPath="yes" Source="SourceDir\FlowUtilities.dll" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32\1.0.0.25483" Name="Class" Value="FlowUtilities.Helper" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32\1.0.0.25483" Name="Assembly" Value="FlowUtilities, Version=1.0.0.25483, Culture=neutral, PublicKeyToken=1486f3d17f0162d9" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32\1.0.0.25483" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32\1.0.0.25483" Name="CodeBase" Value="file:///[#FlowUtilities.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32" Name="Class" Value="FlowUtilities.Helper" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32" Name="Assembly" Value="FlowUtilities, Version=1.0.0.25483, Culture=neutral, PublicKeyToken=1486f3d17f0162d9" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{357EFABF-405E-33D6-A9D8-1E4E1F4AAD18}\InprocServer32" Name="CodeBase" Value="file:///[#FlowUtilities.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32\1.0.0.25483" Name="Class" Value="FlowUtilities.Encryption" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32\1.0.0.25483" Name="Assembly" Value="FlowUtilities, Version=1.0.0.25483, Culture=neutral, PublicKeyToken=1486f3d17f0162d9" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32\1.0.0.25483" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32\1.0.0.25483" Name="CodeBase" Value="file:///[#FlowUtilities.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32" Name="Class" Value="FlowUtilities.Encryption" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32" Name="Assembly" Value="FlowUtilities, Version=1.0.0.25483, Culture=neutral, PublicKeyToken=1486f3d17f0162d9" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{59A515E2-658D-30FE-9CF2-8B51A2354A3F}\InprocServer32" Name="CodeBase" Value="file:///[#FlowUtilities.dll]" Type="string" Action="write" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+</Wix>
