@@ -16,6 +16,14 @@ namespace FlowUtilitiesTest {
 		}
 
 		private void Test_Load(object sender,EventArgs e) {
+            Encryption E = new Encryption();
+            txtOutput.Text = "STARTING\r\n";
+            txtOutput.Text += "SIGNATURE\r\n";
+            string signature = E.CreateRSASignatureMD5("hello world", privateKey);
+            txtOutput.Text += signature;
+
+
+            /*
 			Helper H=new Helper();
 			txtOutput.Text=H.RemoveDiacritics("aácčeéií");
 			
@@ -29,6 +37,7 @@ namespace FlowUtilitiesTest {
 			txtOutput.Text+=L.LastCallLog;
 			blnSuccess=L.Log(0,"error_entity_type","error_entity_id",999,"action","action step",null,"","system_error_detail","message");
 			txtOutput.Text+=L.LastCallLog;
-		}
-	}
+            */
+        }
+    }
 }

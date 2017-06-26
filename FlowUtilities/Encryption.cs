@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FlowUtilities {
 	/// <summary>
@@ -201,11 +202,53 @@ namespace FlowUtilities {
 		public string GetNewNonceSHA512(){
 			return Convert.ToBase64String(new SHA512CryptoServiceProvider().ComputeHash(GetRandomBytes32AndTime()));
 		}
-		#endregion
+        #endregion
 
+        #region RSA signing and verification
+        /// <summary>
+        /// returns the .Net RSA private key algorithm from an encrypted .p12 file
+        /// </summary>
+        /// <param name="keyfile">the fully qualified filename for the encrypted .p12 file</param>
+        /// <param name="password">the password for the encrypted file</param>
+        /// <returns>the private key as a .Net key algorithm</returns>
+        public AsymmetricAlgorithm ImportRSAPrivateKey(string keyfile, string password)
+        {
+            X509Certificate2 cert = new X509Certificate2(keyfile, password);
+            return cert.PrivateKey;
+        }
+        /// <summary>
+        /// returns the .Net RSA public key from an X509 certificate file
+        /// </summary>
+        /// <param name="keyfile">the fully qualified filename for the certificate file</param>
+        /// <returns>the public key in .Net CryptoServiceProvider XML format </returns>
+        public PublicKey ImportRSAPublicKey(string keyfile)
+        {
+            X509Certificate2 cert = new X509Certificate2(keyfile);
+            return cert.PublicKey;
+        }
+        /// <summary>
+        /// returns the digital signature for the data presented
+        /// </summary>
+        /// <param name="message">the data to be signed</param>
+        /// <param name="privateKey">the private key as .Net CyrptoServiceProvider XML format</param>
+        /// <returns></returns>
+        public string CreateRSASignatureMD5(string message, AsymmetricAlgorithm privateKey)
+        {
+            byte[] payload = Encoding.UTF8.GetBytes(message);
+            //The hash to sign.
+            MD5 md5 = MD5.Create();
+            byte[] hash = md5.ComputeHash(payload);
+            RSAPKCS1SignatureFormatter RSAFormatter = new RSAPKCS1SignatureFormatter(privateKey);
+            //Set the hash algorithm.
+            RSAFormatter.SetHashAlgorithm("MD5");
+            //Create a signature for HashValue and return it.
+            byte[] signature = RSAFormatter.CreateSignature(hash);
+            return Convert.ToBase64String(signature);
+        }
+        #endregion
 
-		#region Private Methods
-		private static string ByteArrayToHexadecimalString(byte[] arrayToConvert){
+        #region Private Methods
+        private static string ByteArrayToHexadecimalString(byte[] arrayToConvert){
 			System.Text.StringBuilder sb=new StringBuilder();
 			for(int i=0;i<arrayToConvert.Length;i++){
 				sb.Append(arrayToConvert[i].ToString("x2"));
