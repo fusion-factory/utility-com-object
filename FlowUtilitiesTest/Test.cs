@@ -18,6 +18,10 @@ namespace FlowUtilitiesTest {
 		private void Test_Load(object sender,EventArgs e) {
             Encryption E = new Encryption();
             txtOutput.Text = "STARTING\r\n";
+            System.Security.Cryptography.X509Certificates.PublicKey publicKey = E.ImportRSAPublicKey("..\\..\\test_public.cer");
+            txtOutput.Text += "\r\nPUBLICKEY\r\n";
+           txtOutput.Text += publicKey.Key.ToXmlString(false);
+            System.Security.Cryptography.AsymmetricAlgorithm privateKey = E.ImportRSAPrivateKey("..\\..\\test_cert_key.p12", "notarealpassword");
             txtOutput.Text += "SIGNATURE\r\n";
             string signature = E.CreateRSASignatureMD5("hello world", privateKey);
             txtOutput.Text += signature;

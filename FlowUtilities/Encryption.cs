@@ -50,14 +50,62 @@ namespace FlowUtilities {
 			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
 			return Convert.ToBase64String(new SHA512CryptoServiceProvider().ComputeHash(bytText));
 		}
-		#endregion
-		
-		#region Regular Hashes with each hashed bit converted to hexadecimal string, then Base64 bit encoded
-		/// <summary>
-		/// Returns MD5 Hash with each hashed bit converted to hexadecimal string, then Base64 bit encoded
-		/// </summary>
-		/// <param name="textToHash">String to be hashed</param>
-		public string MD5HashHexBase64(string textToHash){
+        #endregion
+
+        #region Regular Hashes with each hashed bit converted to hexadecimal string
+        /// <summary>
+        /// Returns MD5 Hash with each hashed bit converted to hexadecimal string
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        public string MD5HashHex(string textToHash)
+        {
+            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            return ByteArrayToHexadecimalString(new MD5CryptoServiceProvider().ComputeHash(bytText));
+        }
+        /// <summary>
+        /// Returns SHA1 Hash with each hashed bit converted to hexadecimal string
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        public string SHA1HashHex(string textToHash)
+        {
+            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            return ByteArrayToHexadecimalString(new SHA1CryptoServiceProvider().ComputeHash(bytText));
+        }
+        /// <summary>
+        /// Returns SHA256 Hash with each hashed bit converted to hexadecimal string
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        public string SHA256HashHex(string textToHash)
+        {
+            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            return ByteArrayToHexadecimalString(new SHA256CryptoServiceProvider().ComputeHash(bytText));
+        }
+        /// <summary>
+        /// Returns SHA384 Hash with each hashed bit converted to hexadecimal string
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        public string SHA384HashHex(string textToHash)
+        {
+            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            return ByteArrayToHexadecimalString(new SHA384CryptoServiceProvider().ComputeHash(bytText));
+        }
+        /// <summary>
+        /// Returns SHA512 Hash with each hashed bit converted to hexadecimal string
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        public string SHA512HashHex(string textToHash)
+        {
+            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            return ByteArrayToHexadecimalString(new SHA512CryptoServiceProvider().ComputeHash(bytText));
+        }
+        #endregion
+
+        #region Regular Hashes with each hashed bit converted to hexadecimal string, then Base64 bit encoded
+        /// <summary>
+        /// Returns MD5 Hash with each hashed bit converted to hexadecimal string, then Base64 bit encoded
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        public string MD5HashHexBase64(string textToHash){
 			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
 			return Convert.ToBase64String(Encoding.ASCII.GetBytes(ByteArrayToHexadecimalString(new MD5CryptoServiceProvider().ComputeHash(bytText))));
 		}
