@@ -15,7 +15,7 @@ namespace FlowUtilities {
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string MD5Hash(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
 			return Convert.ToBase64String(new MD5CryptoServiceProvider().ComputeHash(bytText));
 		}
 		/// <summary>
@@ -23,7 +23,7 @@ namespace FlowUtilities {
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA1Hash(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
 			return Convert.ToBase64String(new SHA1CryptoServiceProvider().ComputeHash(bytText));
 		}
 		/// <summary>
@@ -31,7 +31,7 @@ namespace FlowUtilities {
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA256Hash(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
 			return Convert.ToBase64String(new SHA256CryptoServiceProvider().ComputeHash(bytText));
 		}
 		/// <summary>
@@ -39,7 +39,7 @@ namespace FlowUtilities {
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA384Hash(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
 			return Convert.ToBase64String(new SHA384CryptoServiceProvider().ComputeHash(bytText));
 		}
 		/// <summary>
@@ -47,7 +47,7 @@ namespace FlowUtilities {
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA512Hash(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
 			return Convert.ToBase64String(new SHA512CryptoServiceProvider().ComputeHash(bytText));
 		}
         #endregion
@@ -59,7 +59,7 @@ namespace FlowUtilities {
         /// <param name="textToHash">String to be hashed</param>
         public string MD5HashHex(string textToHash)
         {
-            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
             return ByteArrayToHexadecimalString(new MD5CryptoServiceProvider().ComputeHash(bytText));
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace FlowUtilities {
         /// <param name="textToHash">String to be hashed</param>
         public string SHA1HashHex(string textToHash)
         {
-            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
             return ByteArrayToHexadecimalString(new SHA1CryptoServiceProvider().ComputeHash(bytText));
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace FlowUtilities {
         /// <param name="textToHash">String to be hashed</param>
         public string SHA256HashHex(string textToHash)
         {
-            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
             return ByteArrayToHexadecimalString(new SHA256CryptoServiceProvider().ComputeHash(bytText));
         }
         /// <summary>
@@ -86,7 +86,7 @@ namespace FlowUtilities {
         /// <param name="textToHash">String to be hashed</param>
         public string SHA384HashHex(string textToHash)
         {
-            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
             return ByteArrayToHexadecimalString(new SHA384CryptoServiceProvider().ComputeHash(bytText));
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace FlowUtilities {
         /// <param name="textToHash">String to be hashed</param>
         public string SHA512HashHex(string textToHash)
         {
-            byte[] bytText = Encoding.ASCII.GetBytes(textToHash);
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
             return ByteArrayToHexadecimalString(new SHA512CryptoServiceProvider().ComputeHash(bytText));
         }
         #endregion
@@ -106,40 +106,40 @@ namespace FlowUtilities {
         /// </summary>
         /// <param name="textToHash">String to be hashed</param>
         public string MD5HashHexBase64(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			return Convert.ToBase64String(Encoding.ASCII.GetBytes(ByteArrayToHexadecimalString(new MD5CryptoServiceProvider().ComputeHash(bytText))));
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			return Convert.ToBase64String(Encoding.UTF8.GetBytes(ByteArrayToHexadecimalString(new MD5CryptoServiceProvider().ComputeHash(bytText))));
 		}
 		/// <summary>
 		/// Returns SHA1 Hash with each hashed bit converted to hexadecimal string, then Base64 bit encoded
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA1HashHexBase64(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			return Convert.ToBase64String(Encoding.ASCII.GetBytes(ByteArrayToHexadecimalString(new SHA1CryptoServiceProvider().ComputeHash(bytText))));
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			return Convert.ToBase64String(Encoding.UTF8.GetBytes(ByteArrayToHexadecimalString(new SHA1CryptoServiceProvider().ComputeHash(bytText))));
 		}
 		/// <summary>
 		/// Returns SHA256 Hash with each hashed bit converted to hexadecimal string, then Base64 bit encoded
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA256HashHexBase64(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			return Convert.ToBase64String(Encoding.ASCII.GetBytes(ByteArrayToHexadecimalString(new SHA256CryptoServiceProvider().ComputeHash(bytText))));
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			return Convert.ToBase64String(Encoding.UTF8.GetBytes(ByteArrayToHexadecimalString(new SHA256CryptoServiceProvider().ComputeHash(bytText))));
 		}
 		/// <summary>
 		/// Returns SHA384 Hash with each hashed bit converted to hexadecimal string, then Base64 bit encoded
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA384HashHexBase64(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			return Convert.ToBase64String(Encoding.ASCII.GetBytes(ByteArrayToHexadecimalString(new SHA384CryptoServiceProvider().ComputeHash(bytText))));
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			return Convert.ToBase64String(Encoding.UTF8.GetBytes(ByteArrayToHexadecimalString(new SHA384CryptoServiceProvider().ComputeHash(bytText))));
 		}
 		/// <summary>
 		/// Returns SHA512 Hash with each hashed bit converted to hexadecimal string, then Base64 bit encoded
 		/// </summary>
 		/// <param name="textToHash">String to be hashed</param>
 		public string SHA512HashHexBase64(string textToHash){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			return Convert.ToBase64String(Encoding.ASCII.GetBytes(ByteArrayToHexadecimalString(new SHA512CryptoServiceProvider().ComputeHash(bytText))));
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			return Convert.ToBase64String(Encoding.UTF8.GetBytes(ByteArrayToHexadecimalString(new SHA512CryptoServiceProvider().ComputeHash(bytText))));
 		}
 		#endregion
 
@@ -151,8 +151,8 @@ namespace FlowUtilities {
 		/// <param name="textToHash">String to be hashed</param>
 		/// <param name="key">Cryptographic key</param>
 		public string HmacMD5(string textToHash,string key){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			byte[] bytKey=Encoding.ASCII.GetBytes(key);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			byte[] bytKey=Encoding.UTF8.GetBytes(key);
 			return Convert.ToBase64String(new HMACMD5(bytKey).ComputeHash(bytText));
 			//byte[] hash=  new HMACMD5(bytKey).ComputeHash(bytText);
 			//StringBuilder stringBuilder =  new StringBuilder();
@@ -167,8 +167,8 @@ namespace FlowUtilities {
 		/// <param name="textToHash">String to be hashed</param>
 		/// <param name="key">Cryptographic key</param>
 		public string HmacSHA1(string textToHash,string key){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			byte[] bytKey=Encoding.ASCII.GetBytes(key);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			byte[] bytKey=Encoding.UTF8.GetBytes(key);
 			return Convert.ToBase64String(new HMACSHA1(bytKey).ComputeHash(bytText));
 			//byte[] hash=  new HMACSHA1(bytKey).ComputeHash(bytText);
 			//StringBuilder stringBuilder =  new StringBuilder();
@@ -177,30 +177,31 @@ namespace FlowUtilities {
 			//}
 			//return stringBuilder.ToString();
 		}
-		/// <summary>
-		/// Returns SHA256 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
-		/// </summary>
-		/// <param name="textToHash">String to be hashed</param>
-		/// <param name="key">Cryptographic key</param>
-		public string HmacSHA256(string textToHash,string key){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			byte[] bytKey=Encoding.ASCII.GetBytes(key);
-			return Convert.ToBase64String(new HMACSHA256(bytKey).ComputeHash(bytText));
-			//byte[] hash=  new HMACSHA256(bytKey).ComputeHash(bytText);
-			//StringBuilder stringBuilder =  new StringBuilder();
-			//foreach(byte b in hash){
-			//	stringBuilder.Append(b.ToString("x2"));
-			//}
-			//return stringBuilder.ToString();
-		}
-		/// <summary>
-		/// Returns SHA384 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
-		/// </summary>
-		/// <param name="textToHash">String to be hashed</param>
-		/// <param name="key">Cryptographic key</param>
-		public string HmacSHA384(string textToHash,string key){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			byte[] bytKey=Encoding.ASCII.GetBytes(key);
+        /// <summary>
+        /// Returns SHA256 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        public string HmacSHA256(string textToHash, string key)
+        {
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
+            byte[] bytKey = Encoding.UTF8.GetBytes(key);
+            return Convert.ToBase64String(new HMACSHA256(bytKey).ComputeHash(bytText));
+            //byte[] hash=  new HMACSHA256(bytKey).ComputeHash(bytText);
+            //StringBuilder stringBuilder =  new StringBuilder();
+            //foreach(byte b in hash){
+            //	stringBuilder.Append(b.ToString("x2"));
+            //}
+            //return stringBuilder.ToString();
+        }
+        /// <summary>
+        /// Returns SHA384 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        public string HmacSHA384(string textToHash,string key){
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			byte[] bytKey=Encoding.UTF8.GetBytes(key);
 			return Convert.ToBase64String(new HMACSHA384(bytKey).ComputeHash(bytText));
 		}
 		/// <summary>
@@ -209,17 +210,67 @@ namespace FlowUtilities {
 		/// <param name="textToHash">String to be hashed</param>
 		/// <param name="key">Cryptographic key</param>
 		public string HmacSHA512(string textToHash,string key){
-			byte[] bytText=Encoding.ASCII.GetBytes(textToHash);
-			byte[] bytKey=Encoding.ASCII.GetBytes(key);
+			byte[] bytText=Encoding.UTF8.GetBytes(textToHash);
+			byte[] bytKey=Encoding.UTF8.GetBytes(key);
 			return Convert.ToBase64String(new HMACSHA512(bytKey).ComputeHash(bytText));
 		}
-		#endregion
-	
-		#region Nonce
-		private byte[] GetRandomBytes32AndTime(){
+        /// <summary>
+        /// Returns SHA1 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        public string HmacSHA1Hex(string textToHash, string key)
+        {
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
+            byte[] bytKey = Encoding.UTF8.GetBytes(key);
+            return ByteArrayToHexadecimalString(new HMACSHA1(bytKey).ComputeHash(bytText));
+            //byte[] hash=  new HMACSHA1(bytKey).ComputeHash(bytText);
+            //StringBuilder stringBuilder =  new StringBuilder();
+            //foreach(byte b in hash){
+            //	stringBuilder.Append(b.ToString("x2"));
+            //}
+            //return stringBuilder.ToString();
+        }
+        /// <summary>
+        /// Returns SHA256 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        public string HmacSHA256Hex(string textToHash, string key)
+        {
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
+            byte[] bytKey = Encoding.UTF8.GetBytes(key);
+            return ByteArrayToHexadecimalString(new HMACSHA256(bytKey).ComputeHash(bytText));
+        }
+        /// <summary>
+        /// Returns SHA384 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        public string HmacSHA384Hex(string textToHash, string key)
+        {
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
+            byte[] bytKey = Encoding.UTF8.GetBytes(key);
+            return ByteArrayToHexadecimalString(new HMACSHA384(bytKey).ComputeHash(bytText));
+        }
+        /// <summary>
+        /// Returns SHA512 HMAC of the string. http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        public string HmacSHA512Hex(string textToHash, string key)
+        {
+            byte[] bytText = Encoding.UTF8.GetBytes(textToHash);
+            byte[] bytKey = Encoding.UTF8.GetBytes(key);
+            return ByteArrayToHexadecimalString(new HMACSHA512(bytKey).ComputeHash(bytText));
+        }
+        #endregion
+
+        #region Nonce
+        private byte[] GetRandomBytes32AndTime(){
 			byte[] bytRandom=new byte[32];
 			new Random().NextBytes(bytRandom);
-			byte[] bytTime=Encoding.ASCII.GetBytes(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fffff"));
+			byte[] bytTime=Encoding.UTF8.GetBytes(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fffff"));
 			byte[] bytResult=new byte[32+25];
 			Buffer.BlockCopy(bytRandom,0,bytResult,0,32);
 			Buffer.BlockCopy(bytTime,0,bytResult,32,25);
