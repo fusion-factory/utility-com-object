@@ -17,7 +17,22 @@ namespace FlowUtilitiesTest {
 
 		private void Test_Load(object sender,EventArgs e) {
             Encryption E = new Encryption();
+            Byte[] all_ascii = new Byte[128];
+            Byte[] all_utf = new Byte[256];
+            for (int i = 0; i < 128; ++i)
+                all_ascii[i] = (Byte)i;
+            for (int i = 0; i < 256; ++i)
+                all_utf[i] = (Byte)i;
             txtOutput.Text = "STARTING\r\n";
+            txtOutput.Text += "\r\nEMPTY hashtext\r\n";
+            txtOutput.Text += E.SHA256HashHex("");
+            txtOutput.Text += "\r\nEMPTY hashtext,key\r\n";
+            txtOutput.Text += E.HmacSHA256Hex("", "");
+            txtOutput.Text += "\r\nAll ASCII\r\n";
+            txtOutput.Text += E.SHA256HashHex(all_ascii);
+            txtOutput.Text += "\r\nAll UTF\r\n";
+            txtOutput.Text += E.SHA256HashHex(all_utf);
+            /*
             System.Security.Cryptography.X509Certificates.PublicKey publicKey = E.ImportRSAPublicKey("..\\..\\test_public.cer");
             txtOutput.Text += "\r\nPUBLICKEY\r\n";
            txtOutput.Text += publicKey.Key.ToXmlString(false);
@@ -25,6 +40,7 @@ namespace FlowUtilitiesTest {
             txtOutput.Text += "SIGNATURE\r\n";
             string signature = E.CreateRSASignatureMD5("hello world", privateKey);
             txtOutput.Text += signature;
+            */
 
 
             /*
