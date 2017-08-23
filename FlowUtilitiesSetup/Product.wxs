@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension" xmlns:util='http://schemas.microsoft.com/wix/UtilExtension'>
-	<Product Id="fe4fb4fc-007a-4d54-88d8-f095adf4d033" Name="Fusion Factory - Flow Utilities" Language="1033" Version="1.0.1" Manufacturer="Fusion Factory LTD PTY" UpgradeCode="8eb8d438-5d49-4e98-9f3f-af481a8978fe">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="Utility methods to be used from within Flow Software (http://flowsoftware.co.nz)" Comments="This package will install .NET DLL and register it to be used by Flow Software and other tools that can call COM components" Keywords="Fusion Factory, Flow Software" Manufacturer="Nicholas Blake nicholas.blake.au@gmail.com" />
+	<Product Id="fe4fb4fc-007a-4d54-88d8-f095adf4d033" Name="Fusion Factory - Flow Utilities" Language="1033" Version="1.0.1" Manufacturer="Fusion Factory PTY LTD" UpgradeCode="8eb8d438-5d49-4e98-9f3f-af481a8978fe">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="Utility methods to be used from within Flow Software (http://flowsoftware.co.nz)" Comments="This package will install .NET DLL and register it to be used by Flow Software and other tools that can call COM components" Manufacturer="Fusion Factory PTY LTD" />
 		<!--MediaTemplate /-->
 		<Media Id="1" EmbedCab="yes" Cabinet="FlowUtilities.cab" CompressionLevel="high" />
 
@@ -9,7 +9,7 @@
 		<Property Id="ARPPRODUCTICON" Value="icon.ico" />
 		<UIRef Id="WixUI_InstallDir" />
 		<PropertyRef Id="NETFRAMEWORK45"/><!--That can run on Vista SP2, 7, 8, 2008 SP2, 2008 R2 SP1, 2012. The app should be compiled for 4.5 to run on computers with .NET 4.5, 4.5.1, 4.5.2, 4.6-->
-		<Property Id="WIXUI_INSTALLDIR" Value="ProgramFilesFolder" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
 		<Property Id="WINED" Secure="yes"><RegistrySearch Id="WindowsEditionReg" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="EditionID" Type="raw" /></Property>
 		<Property Id="WINTYPE" Secure="yes"><RegistrySearch Id="WindowsEditionType" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="InstallationType" Type="raw" /></Property>
 
@@ -21,7 +21,7 @@
 
 
 		<!--INITIAL CHECKS-->
-		<MajorUpgrade DowngradeErrorMessage="A newer version of Courier Connect is already installed." />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of FlowUtilities.dll is already installed." />
 		<Condition Message="This application is only supported on Windows Server 2008 and higher, or Win7 Professional or higher.">
 			<![CDATA[Installed OR (VersionNT=600 AND WINTYPE~="Server") OR (VersionNT>600 AND (WINTYPE~="Server" OR WINED~="Professional"))]]>
 		</Condition>
@@ -29,7 +29,7 @@
 				<![CDATA[Installed OR NETFRAMEWORK45]]>
 		</Condition>
 
-		<Feature Id="ProductFeature" Title="FlowUtilitiesSetup" Level="1">
+		<Feature Id="ProductFeature" Title="FlowUtilitiesSetup" Level="1" ConfigurableDirectory="INSTALLFOLDER">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
 
@@ -43,7 +43,7 @@
 		<CustomAction Id="CA.RegisterDLL" BinaryKey="binHelper" Execute="immediate" DllEntry="RegisterDLL" />	
 		<CustomAction Id='comUnreg' Directory='INSTALLFOLDER' ExeCommand='"[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\regasm.exe" /u "[INSTALLFOLDER]FlowUtilities.dll"' Return='check' />
 		
-		<Binary Id="binHelper" SourceFile="..\FlowUtilitiesCustomActionsLibrary\bin\Debug\FlowUtilitiesCustomActionsLibrary.CA.dll" />
+		<Binary Id="binHelper" SourceFile="$(var.FlowUtilitiesCustomActionsLibrary.TargetDir)FlowUtilitiesCustomActionsLibrary.CA.dll" />
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
@@ -55,10 +55,10 @@
 
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
 			<Component Id="BinComponent" Guid="{9c53e151-a67b-44de-bf2d-b80b266b6f15}">
-				<File Id="FlowUtilities.pdb" Source="..\FlowUtilities\bin\Debug\FlowUtilities.pdb" />
-				<File Id="FlowUtilities.XML" Source="..\FlowUtilities\bin\Debug\FlowUtilities.XML" />
-				<File Id="FlowUtilities.dll" Source="..\FlowUtilities\bin\Debug\FlowUtilities.dll" />
-				<!--File Id="FlowUtilitiesInitializationTest.vbs" Source="..\FlowUtilities\bin\Debug\FlowUtilitiesInitializationTest.vbs" /-->
+				<File Id="FlowUtilities.pdb" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.pdb" />
+				<File Id="FlowUtilities.XML" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.XML" />
+        <File Id="FlowUtilities.dll" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.dll" />
+        <!--File Id="FlowUtilitiesInitializationTest.vbs" Source="..\FlowUtilities\bin\Debug\FlowUtilitiesInitializationTest.vbs" /-->
 			</Component>
 		</ComponentGroup>
 	</Product>

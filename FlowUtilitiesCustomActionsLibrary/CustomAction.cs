@@ -11,7 +11,7 @@ namespace FlowUtilitiesCustomActionsLibrary {
 		#region RegisterDLL
 		[CustomAction]
 		public static ActionResult RegisterDLL(Session session) {
-			session.Log("Begin RegisterDLL &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+            session.Log("Begin RegisterDLL &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 			
 			#region Get the Install Folder used by the Installer
 			session.Log("Get PathName of DLL to register");

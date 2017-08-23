@@ -6,8 +6,8 @@
 		<SetupF>..\..\Setup\</SetupF>
 		<PublishF>publish\</PublishF>
 		<Publish>$(SetupF)$(PublishF)</Publish>
-		<MsiOut>bin\Debug\FlowUtilitiesSetup.msi</MsiOut>
-	</PropertyGroup>
+    <MsiOut>$(var.TargetPath)</MsiOut>
+  </PropertyGroup>
 
  
 	<!-- The list of WIX input files -->
@@ -22,7 +22,7 @@
 
 	<Target Name="Build">
 	<!-- Compile whole solution in release mode -->
-		<MSBuild Projects="..\FlowUtilities.sln" Targets="ReBuild" Properties="Configuration=Debug" />
+		<MSBuild Projects="$(var.SolutionPath)" Targets="ReBuild" Properties="Configuration=$(var.Configuration)" />
 	</Target>
 
 	<Target Name="WIX">
