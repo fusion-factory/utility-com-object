@@ -286,6 +286,60 @@ namespace FlowUtilities {
             byte[] bytKey = AsBytes(key);
             return ByteArrayToHexadecimalString(new HMACSHA512(bytKey).ComputeHash(bytText));
         }
+
+        /// <summary>
+        /// Returns Rijndael encrypted result of the text using the key.
+        /// </summary>
+        /// <param name="textToHash">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        /// <param name="cipher_mode">block cipher_mode</param>
+        /// <param name="blockSize">block size</param>
+        /// <param name="padding">block padding</param>
+        public string RijndaelEncryptBase64(Object textToHash, string key, int cipher_mode, int blockSize, int padding)
+        {
+            byte[] bytText = AsBytes(textToHash);
+            byte[] bytKey = Convert.FromBase64String(key);
+
+            RijndaelManaged rDel = new RijndaelManaged();
+            rDel.Key = bytKey;
+            rDel.Mode = (CipherMode)cipher_mode;// CipherMode.ECB;
+            rDel.BlockSize = blockSize;
+            rDel.Padding = (PaddingMode)padding;// PaddingMode.PKCS7;
+
+            ICryptoTransform cTransform = rDel.CreateEncryptor(bytKey, null);
+
+            byte[] resultArray = cTransform.TransformFinalBlock(bytText, 0, bytText.Length);
+
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+
+        /// <summary>
+        /// Returns decrypted result of the Rijndael encoded text using the key.
+        /// </summary>
+        /// <param name="hashedText">String to be hashed</param>
+        /// <param name="key">Cryptographic key</param>
+        /// <param name="cipher_mode">block cipher_mode</param>
+        /// <param name="blockSize">block size</param>
+        /// <param name="padding">block padding</param>
+        public string RijndaelDecryptBase64(string hashedText, string key, int cipher_mode, int blockSize, int padding)
+        {
+            var UTF8 = new System.Text.UTF8Encoding();
+            byte[] bytText = Convert.FromBase64String(hashedText);
+            byte[] bytKey = Convert.FromBase64String(key);
+
+            RijndaelManaged rDel = new RijndaelManaged();
+            rDel.Key = bytKey;
+            rDel.Mode = (CipherMode)cipher_mode;// CipherMode.ECB;
+            rDel.BlockSize = blockSize;
+            rDel.Padding = (PaddingMode)padding;// PaddingMode.PKCS7;
+
+            ICryptoTransform cTransform = rDel.CreateDecryptor(bytKey, null);
+
+            byte[] resultArray = cTransform.TransformFinalBlock(bytText, 0, bytText.Length);
+
+            return UTF8.GetString(resultArray);
+        }
+
         #endregion
 
         #region Nonce

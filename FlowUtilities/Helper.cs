@@ -2,7 +2,9 @@
 using System.Runtime.InteropServices;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Globalization;
+using System.Security.Cryptography;
 
 namespace FlowUtilities {
 	/// <summary>
@@ -64,7 +66,41 @@ namespace FlowUtilities {
 											UnicodeCategory.NonSpacingMark)
 			).Normalize(NormalizationForm.FormC);
 		}
-		#endregion
+        #endregion
 
-	}
+        #region GenerateInclude
+        private void GenerateEnumDefinitions(StreamWriter sw, Type t)
+        {
+            string line = "";
+            foreach (Object c in Enum.GetValues(t))
+            {
+                line = "const " + t.ToString() + "_" + c.ToString() + " = " + ((int)c).ToString() + ";\r\n";
+                sw.Write(line.Replace('.', '_'));
+            }
+            sw.Write("\r\n");
+        }
+        /// <summary>
+        /// generates FlowUtilities.inc file
+        /// </summary>
+        /// <param name="folderPath">optional - location to place the generated file</param>
+        public void GenerateInclude(string folderPath)
+        {
+            if (folderPath == null || folderPath == "")
+                folderPath = "C:\\ProgramData\\Flow\\Script";
+            string fileName = folderPath + "\\" + "FlowUtilities.inc";
+            string header = "{$IfNDef FlowUtilties_Included}\r\n{$Define FlowUtilties_Included}\r\n\r\n{ Copyright Fusion Factory Pty Ltd 2017}\r\n\r\n";
+            string footer = "{$EndIf}\r\n";
+            StreamWriter sw = System.IO.File.CreateText(fileName);
+            sw.Write(header);
+
+            GenerateEnumDefinitions(sw, typeof(CipherMode));
+            GenerateEnumDefinitions(sw, typeof(PaddingMode));
+
+            sw.Write(footer);
+            sw.Close();
+
+        }
+        #endregion
+
+    }
 }

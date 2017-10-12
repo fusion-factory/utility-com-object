@@ -8,8 +8,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowUtilitiesTest", "FlowUtilitiesTest\FlowUtilitiesTest.csproj", "{733557B2-83B5-4C83-A59B-D5F2DFD3D966}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "FlowUtilitiesSetup", "FlowUtilitiesSetup\FlowUtilitiesSetup.wixproj", "{3CA9606C-CE35-408B-A1A8-57E233614502}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F} = {9C90AC98-5B08-42FF-9151-CC9D49BABD3F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowUtilitiesCustomActionsLibrary", "FlowUtilitiesCustomActionsLibrary\FlowUtilitiesCustomActionsLibrary.csproj", "{DE6A8FAC-5150-449E-B782-487E36EBBED6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{94B6B2FF-1693-406D-AE4C-52E5B3011E8D}"
+	ProjectSection(SolutionItems) = preProject
+		Script\FlowUtilities.inc = Script\FlowUtilities.inc
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostBuildStep", "PostBuildStep\PostBuildStep.csproj", "{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cmd", "Cmd", "{0A611597-B56F-4E46-B299-72C8CA35350E}"
+	ProjectSection(SolutionItems) = preProject
+		Cmd\FlowUtilitiesSetup.bat = Cmd\FlowUtilitiesSetup.bat
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +76,18 @@ Global
 		{DE6A8FAC-5150-449E-B782-487E36EBBED6}.Release|Mixed Platforms.Build.0 = Release|x86
 		{DE6A8FAC-5150-449E-B782-487E36EBBED6}.Release|x86.ActiveCfg = Release|x86
 		{DE6A8FAC-5150-449E-B782-487E36EBBED6}.Release|x86.Build.0 = Release|x86
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Debug|x86.Build.0 = Debug|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|x86.ActiveCfg = Release|Any CPU
+		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

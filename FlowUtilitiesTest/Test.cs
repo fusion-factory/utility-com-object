@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 using FlowUtilities;
 
 namespace FlowUtilitiesTest {
@@ -15,8 +16,25 @@ namespace FlowUtilitiesTest {
 			InitializeComponent();
 		}
 
-		private void Test_Load(object sender,EventArgs e) {
+        const String tokenKey = "TCcPw1eTIP3jtf2SBWFhZQ==";
+
+        private void Test_Load(object sender,EventArgs e) {
             Encryption E = new Encryption();
+            string original = "{\"active\":\"true\"}";
+            string expectedOutput = "ZpvuG8KzgctgU716ZDpkc4nQvkRjY/KhzqnJYkBYg/A=";
+
+            var UTF8 = new System.Text.UTF8Encoding();
+            var encString = E.RijndaelEncryptBase64(original, tokenKey, (int)CipherMode.ECB, 128, (int)PaddingMode.PKCS7);
+
+            txtOutput.Text = "Original:   " + original + "\r\n";
+            txtOutput.Text += "Expected:   " + expectedOutput + "\r\n";
+            txtOutput.Text += "Encrypted:  " + encString + "\r\n";
+            txtOutput.Text += "Decrypted:  " + E.RijndaelDecryptBase64(encString, tokenKey, (int)CipherMode.ECB, 128, (int)PaddingMode.PKCS7) + "\r\n";
+
+            Helper H = new Helper();
+            H.GenerateInclude("");
+
+            /*
             Byte[] all_ascii = new Byte[128];
             Byte[] all_utf = new Byte[256];
             for (int i = 0; i < 128; ++i)
@@ -32,7 +50,6 @@ namespace FlowUtilitiesTest {
             txtOutput.Text += E.SHA256HashHex(all_ascii);
             txtOutput.Text += "\r\nAll UTF\r\n";
             txtOutput.Text += E.SHA256HashHex(all_utf);
-            /*
             System.Security.Cryptography.X509Certificates.PublicKey publicKey = E.ImportRSAPublicKey("..\\..\\test_public.cer");
             txtOutput.Text += "\r\nPUBLICKEY\r\n";
            txtOutput.Text += publicKey.Key.ToXmlString(false);

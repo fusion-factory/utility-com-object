@@ -35,15 +35,16 @@
 
 		<InstallExecuteSequence>
 			<!--Custom Action='comReg' After='InstallFinalize'>NOT INSTALLED</Custom-->
-			<Custom Action='CA.RegisterDLL' After='InstallFinalize'>NOT REMOVE="ALL"</Custom><!--InstallFinalize is the event when the files had been copied-->
-			<Custom Action='comUnreg' Before='RemoveFiles'>REMOVE="ALL"</Custom> 
+      <!--InstallFinalize is the event when the files had been copied-->
+      <Custom Action='CA.RegisterDLL' After='InstallFinalize'>NOT REMOVE="ALL"</Custom>
+      <Custom Action='comUnreg' Before='RemoveFiles'>REMOVE="ALL"</Custom> 
 		</InstallExecuteSequence>
 
 		<!--CustomAction Id='comReg' Directory='INSTALLFOLDER' ExeCommand='"[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\regasm.exe" /codebase "[INSTALLFOLDER]FlowUtilities.dll"' Return='check' /-->
-		<CustomAction Id="CA.RegisterDLL" BinaryKey="binHelper" Execute="immediate" DllEntry="RegisterDLL" />	
-		<CustomAction Id='comUnreg' Directory='INSTALLFOLDER' ExeCommand='"[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\regasm.exe" /u "[INSTALLFOLDER]FlowUtilities.dll"' Return='check' />
-		
-		<Binary Id="binHelper" SourceFile="$(var.FlowUtilitiesCustomActionsLibrary.TargetDir)FlowUtilitiesCustomActionsLibrary.CA.dll" />
+		<CustomAction Id="CA.RegisterDLL" BinaryKey="binHelper" Execute="immediate" DllEntry="RegisterDLL" />
+    <CustomAction Id='comUnreg' Directory='INSTALLFOLDER' ExeCommand='"[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\regasm.exe" /u "[INSTALLFOLDER]FlowUtilities.dll"' Return='check' />
+
+    <Binary Id="binHelper" SourceFile="$(var.FlowUtilitiesCustomActionsLibrary.TargetDir)FlowUtilitiesCustomActionsLibrary.CA.dll" />
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
@@ -51,6 +52,11 @@
 					<Directory Id="INSTALLFOLDER" Name="FlowUtilities" />
 				</Directory>
 			</Directory>
+      <Directory Id="ProgramDataFolder" Name="ProgramData">
+        <Directory Id="Flow" Name="Flow">
+          <Directory Id="Script" Name="Script"/>
+        </Directory>
+      </Directory>
 		</Directory>
 
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
@@ -58,6 +64,9 @@
 				<File Id="FlowUtilities.pdb" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.pdb" />
 				<File Id="FlowUtilities.XML" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.XML" />
         <File Id="FlowUtilities.dll" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.dll" />
+        <File Id="FlowUtilities.inc" Source="$(var.SolutionDir)\Script\FlowUtilities.inc">
+          <CopyFile Id="Includes" DestinationDirectory="Script"/>
+        </File>
         <!--File Id="FlowUtilitiesInitializationTest.vbs" Source="..\FlowUtilities\bin\Debug\FlowUtilitiesInitializationTest.vbs" /-->
 			</Component>
 		</ComponentGroup>
