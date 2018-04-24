@@ -420,6 +420,46 @@ namespace FlowUtilities {
             byte[] signature = RSAFormatter.CreateSignature(hash);
             return Convert.ToBase64String(signature);
         }
+
+        /// <summary>
+        /// returns the digital signature for the data presented
+        /// </summary>
+        /// <param name="message">the data to be signed</param>
+        /// <param name="privateKey">the private key as .Net CyrptoServiceProvider XML format</param>
+        /// <returns></returns>
+        public string CreateRSASignatureSHA256(Object message, AsymmetricAlgorithm privateKey)
+        {
+            byte[] payload = AsBytes(message);
+            //The hash to sign.
+            SHA256 sha256 = SHA256.Create();
+            byte[] hash = sha256.ComputeHash(payload);
+            RSAPKCS1SignatureFormatter RSAFormatter = new RSAPKCS1SignatureFormatter((RSACryptoServiceProvider)privateKey);
+            //Set the hash algorithm.
+            RSAFormatter.SetHashAlgorithm("SHA256");
+            //Create a signature for HashValue and return it.
+            byte[] signature = RSAFormatter.CreateSignature(hash);
+            return Convert.ToBase64String(signature);
+        }
+
+        /// <summary>
+        /// returns the digital signature for the data presented
+        /// </summary>
+        /// <param name="message">the data to be signed</param>
+        /// <param name="privateKey">the private key as .Net CyrptoServiceProvider XML format</param>
+        /// <returns></returns>
+        public string CreateRSASignatureSHA256Hex(Object message, AsymmetricAlgorithm privateKey)
+        {
+            byte[] payload = AsBytes(message);
+            //The hash to sign.
+            SHA256 sha256 = SHA256.Create();
+            byte[] hash = sha256.ComputeHash(payload);
+            RSAPKCS1SignatureFormatter RSAFormatter = new RSAPKCS1SignatureFormatter((RSACryptoServiceProvider)privateKey);
+            //Set the hash algorithm.
+            RSAFormatter.SetHashAlgorithm("SHA256");
+            //Create a signature for HashValue and return it.
+            byte[] signature = RSAFormatter.CreateSignature(hash);
+            return ByteArrayToHexadecimalString(signature);
+        }
         #endregion
 
         #region Private Methods

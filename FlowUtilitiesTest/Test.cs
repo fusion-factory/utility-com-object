@@ -20,6 +20,7 @@ namespace FlowUtilitiesTest {
 
         private void Test_Load(object sender,EventArgs e) {
             Encryption E = new Encryption();
+            /*
             string original = "{\"active\":\"true\"}";
             string expectedOutput = "ZpvuG8KzgctgU716ZDpkc4nQvkRjY/KhzqnJYkBYg/A=";
 
@@ -34,7 +35,6 @@ namespace FlowUtilitiesTest {
             Helper H = new Helper();
             H.GenerateInclude("");
 
-            /*
             Byte[] all_ascii = new Byte[128];
             Byte[] all_utf = new Byte[256];
             for (int i = 0; i < 128; ++i)
@@ -50,14 +50,18 @@ namespace FlowUtilitiesTest {
             txtOutput.Text += E.SHA256HashHex(all_ascii);
             txtOutput.Text += "\r\nAll UTF\r\n";
             txtOutput.Text += E.SHA256HashHex(all_utf);
-            System.Security.Cryptography.X509Certificates.PublicKey publicKey = E.ImportRSAPublicKey("..\\..\\test_public.cer");
-            txtOutput.Text += "\r\nPUBLICKEY\r\n";
-           txtOutput.Text += publicKey.Key.ToXmlString(false);
-            System.Security.Cryptography.AsymmetricAlgorithm privateKey = E.ImportRSAPrivateKey("..\\..\\test_cert_key.p12", "notarealpassword");
-            txtOutput.Text += "SIGNATURE\r\n";
-            string signature = E.CreateRSASignatureMD5("hello world", privateKey);
-            txtOutput.Text += signature;
             */
+            //System.Security.Cryptography.X509Certificates.PublicKey publicKey = E.ImportRSAPublicKey("..\\..\\sha256_public.cer");
+            //txtOutput.Text += "\r\nPUBLICKEY\r\n";
+           //txtOutput.Text += publicKey.Key.ToXmlString(false);
+            System.Security.Cryptography.AsymmetricAlgorithm privateKey = E.ImportRSAPrivateKey("..\\..\\private-ff.pfx", "fusionfactory");
+            txtOutput.Text += "\r\nKEY ALG\r\n";
+            txtOutput.Text += privateKey.KeyExchangeAlgorithm;
+            System.Security.Cryptography.RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)privateKey;
+            txtOutput.Text += "\r\nSIGNATURE ALG\r\n";
+            txtOutput.Text += rsa.SignatureAlgorithm;
+            string signature = E.CreateRSASignatureSHA256("hello world", privateKey);
+            txtOutput.Text += "\r\n" + signature;
 
 
             /*
