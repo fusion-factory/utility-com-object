@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ADAL.cs" />
+    <Compile Include="ConvertEncoding.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="LockUtil.cs" />
