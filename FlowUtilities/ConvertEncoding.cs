@@ -11,6 +11,9 @@ namespace FlowUtilities
     {
         public string Win1252ToWideString(string win_1252)
         {
+            if (win_1252 == null || win_1252.Length == 0)
+                return "";
+
             byte[] as_bytes = new byte[win_1252.Length];
             for (int i = 0; i < win_1252.Length; ++i)
                 as_bytes[i] = (byte)win_1252[i];
@@ -20,6 +23,9 @@ namespace FlowUtilities
 
         public string WideStringToUTF8(string ws)
         {
+            if (ws == null || ws.Length == 0)
+                return "";
+
             Encoding ecUTF8 = Encoding.UTF8;
             byte[] as_bytes = ecUTF8.GetBytes(ws);
             StringBuilder s = new StringBuilder();
@@ -30,6 +36,9 @@ namespace FlowUtilities
 
         public string UTF8ToWideString(string utf8)
         {
+            if (utf8 == null || utf8.Length == 0)
+                return "";
+
             byte[] as_bytes = new byte[utf8.Length];
             for (int i = 0; i < utf8.Length; ++i)
                 as_bytes[i] = (byte)utf8[i];
