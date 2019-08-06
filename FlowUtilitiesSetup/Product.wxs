@@ -22,8 +22,8 @@
 
 		<!--INITIAL CHECKS-->
 		<MajorUpgrade DowngradeErrorMessage="A newer version of FlowUtilities.dll is already installed." />
-		<Condition Message="This application is only supported on Windows Server 2008 and higher, or Win7 Professional or higher.">
-			<![CDATA[Installed OR (VersionNT=600 AND WINTYPE~="Server") OR (VersionNT>600 AND (WINTYPE~="Server" OR WINED~="Professional"))]]>
+		<Condition Message="This application is only supported on Windows Server 2008 and higher, or Win8 Professional or higher.">
+      <![CDATA[(VersionNT>=600 AND MsiNTProductType=1) OR (VersionNT>=600 AND MsiNTProductType<>1)]]><!--<![CDATA[Installed OR (VersionNT>=600 AND WINTYPE~="Server") OR (VersionNT>=600 AND (WINTYPE~="Server" OR WINED~="Professional"))]]>-->
 		</Condition>
 		<Condition Message="This application requires .NET Framework 4.5, 4.5.1, 4.5.2 or 4.6. Please install the .NET Framework then run this installer again.">
 				<![CDATA[Installed OR NETFRAMEWORK45]]>
