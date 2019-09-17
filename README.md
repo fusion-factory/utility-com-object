@@ -5,3 +5,5 @@ Original version of this contained a wrapper for an AS400 object (not standard .
 The solution utilises WiX extensions to create an MSI installer
 To build the solution you will need to install WiX Tool and the Visual Studio extension
 see http://wixtoolset.org
+You will also need the Sandcastle Helpfile Builder
+see https://github.com/EWSoftware/SHFB/releases
