@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowUtilities", "FlowUtilities\FlowUtilities.csproj", "{1D72CCE5-CE16-43EC-917E-50A985D31C2F}"
 EndProject
@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cmd", "Cmd", "{0A611597-B56
 	ProjectSection(SolutionItems) = preProject
 		Cmd\FlowUtilitiesSetup.bat = Cmd\FlowUtilitiesSetup.bat
 	EndProjectSection
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FlowUtilitiesDocumentation", "FlowUtilitiesDocumentation\FlowUtilitiesDocumentation.shfbproj", "{AE50DA95-E598-4D8A-8D60-7AA1E750909D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,8 +90,23 @@ Global
 		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|x86.ActiveCfg = Release|Any CPU
 		{9C90AC98-5B08-42FF-9151-CC9D49BABD3F}.Release|x86.Build.0 = Release|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE50DA95-E598-4D8A-8D60-7AA1E750909D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {772EA443-32B1-4D83-A7E0-18D281A1C61E}
 	EndGlobalSection
 EndGlobal

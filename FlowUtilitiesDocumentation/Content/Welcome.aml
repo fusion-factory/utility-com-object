@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="14ce39da-c74c-42a9-aa2a-0928b1bd9e50" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>The FlowUtilities Library makes selected .Net functions available to Flow by wrapping them in a COM object</para>
+		</introduction>
+
+		<section>
+			<title>Getting Started</title>
+			<content>
+				<para>The .Net Framework contains a rich set of Classes which offer functionality not otherwise available to Flow Script.
+        Flow does however have the ability to call external methods via the COM interface.
+      By creating a COM wrapper for specified .Net Classes, these become available in Flow</para>
+        <para>For details on calling COM objects from Flow, see the CreateOleObject function in the Flow Administration Guide</para>
+        <para>Note that Flow script generally uses Variants to contain the COM Objects, parameters and return values.</para>
+
+				<!--
+        <list class="bullet">
+					<listItem>
+						<para><localUri>ContentLayout.content</localUri> - Use the content layout file to manage the
+conceptual content in the project and define its layout in the table of contents.</para>
+					</listItem>
+
+					<listItem>
+						<para>The <localUri>.\media</localUri> folder - Place images in this folder that you will reference
+from conceptual content using <codeInline>medialLink</codeInline> or <codeInline>mediaLinkInline</codeInline>
+elements.  If you will not have any images in the file, you may remove this folder.</para>
+					</listItem>
+
+					<listItem>
+						<para>The <localUri>.\icons</localUri> folder - This contains a default logo for the help file.  You
+may replace it or remove it and the folder if not wanted.  If removed or if you change the file name, update
+the <ui>Transform Args</ui> project properties page by removing or changing the filename in the
+<codeInline>logoFile</codeInline> transform argument.  Note that unlike images referenced from conceptual topics,
+the logo file should have its <legacyBold>BuildAction</legacyBold> property set to <codeInline>Content</codeInline>.</para>
+					</listItem>
+
+					<listItem>
+						<para>The <localUri>.\Content</localUri> folder - Use this to store your conceptual topics.  You may
+name the files and organize them however you like.  One suggestion is to lay the files out on disk as you have
+them in the content layout file as shown in this project but the choice is yours.  Files can be added via the
+Solution Explorer or from within the content layout file editor.  Files must appear in the content layout file
+in order to be compiled into the help file.</para>
+					</listItem>
+				</list>
+
+				<para>See the <legacyBold>Conceptual Content</legacyBold> topics in the Sandcastle Help File Builder's
+help file for more information.  See the <legacyBold> Sandcastle MAML Guide</legacyBold> for details on Microsoft
+Assistance Markup Language (MAML) which is used to create these topics.</para>
+			-->
+      </content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="3ef21682-2810-42e0-a443-ed9a321bdd05" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>
