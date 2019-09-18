@@ -7,3 +7,4 @@ To build the solution you will need to install WiX Tool and the Visual Studio ex
 see http://wixtoolset.org
 You will also need the Sandcastle Helpfile Builder
 see https://github.com/EWSoftware/SHFB/releases
+See also https://docs.microsoft.com/en-us/dotnet/csharp/codedoc for advice on the inline comments
