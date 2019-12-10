@@ -150,11 +150,11 @@ namespace FlowUtilities
         /// <summary>
         /// The BaseUtcOffset property of the current TimeZoneInfo
         /// </summary>
-        /// <returns>TimeZoneInfo.BaseUtcOffset in days</returns>
+        /// <returns>TimeZoneInfo.BaseUtcOffset in minutes</returns>
         public double BaseUtcOffset()
         {
             if (pos < list.Count)
-                return list[pos].BaseUtcOffset.TotalDays;
+                return list[pos].BaseUtcOffset.Minutes;
             else
                 return 0;
         }
