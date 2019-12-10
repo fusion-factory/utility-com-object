@@ -25,9 +25,9 @@ namespace FlowUtilities
         }
 
         /// <summary>
-        /// Return the index of the current TimeZoneInfo object
+        /// Return the index of the currently selected TimeZoneInfo object
         /// </summary>
-        /// <returns>Current position</returns>
+        /// <returns>currently selected position</returns>
         public int RecordPosition()
         {
             return pos;
@@ -124,7 +124,7 @@ namespace FlowUtilities
         }
 
         /// <summary>
-        /// The Id property of the current TimeZoneInfo
+        /// The Id property of the currently selected TimeZoneInfo
         /// </summary>
         /// <returns>TimeZoneInfo.Id</returns>
         public string Id()
@@ -136,7 +136,7 @@ namespace FlowUtilities
         }
 
         /// <summary>
-        /// The SupportsDaylightSavingTime property of the current TimeZoneInfo
+        /// The SupportsDaylightSavingTime property of the currently selected TimeZoneInfo
         /// </summary>
         /// <returns>TimeZoneInfo.SupportsDaylightSavingTime</returns>
         public bool SupportsDaylightSavingTime()
@@ -148,19 +148,36 @@ namespace FlowUtilities
         }
 
         /// <summary>
-        /// The BaseUtcOffset property of the current TimeZoneInfo
+        /// The BaseUtcOffset property of the currently selected TimeZoneInfo
         /// </summary>
         /// <returns>TimeZoneInfo.BaseUtcOffset in minutes</returns>
         public double BaseUtcOffset()
         {
             if (pos < list.Count)
-                return list[pos].BaseUtcOffset.Minutes;
+                return list[pos].BaseUtcOffset.Hours * 60 + list[pos].BaseUtcOffset.Minutes;
             else
                 return 0;
         }
 
         /// <summary>
-        /// The DisplayName property of the current TimeZoneInfo
+        /// The GetUtcOffset property of the currently selected TimeZoneInfo for the specified time
+        /// </summary>
+        /// <param name="dateTime">the specified time in the current timezone to get the offset for</param>
+        /// <returns>total offset in minutes</returns>
+        public float GetUtcOffset(DateTime dateTime)
+        {
+            TimeSpan offset;
+            if (pos < list.Count)
+            {
+                offset = list[pos].GetUtcOffset(dateTime);
+                return offset.Hours * 60 + offset.Minutes;
+            }
+            else
+                return 0;
+        }
+
+        /// <summary>
+        /// The DisplayName property of the currently selected TimeZoneInfo
         /// </summary>
         /// <returns>TimeZoneInfo.DisplayName</returns>
         public string DisplayName()
@@ -172,7 +189,7 @@ namespace FlowUtilities
         }
 
         /// <summary>
-        /// The StandardName property of the current TimeZoneInfo
+        /// The StandardName property of the currently selected TimeZoneInfo
         /// </summary>
         /// <returns>TimeZoneInfo.StandardName</returns>
         public string StandardName()
@@ -184,7 +201,7 @@ namespace FlowUtilities
         }
 
         /// <summary>
-        /// The DaylightName property of the current TimeZoneInfo
+        /// The DaylightName property of the currently selected TimeZoneInfo
         /// </summary>
         /// <returns>TimeZoneInfo.DaylightName</returns>
         public string DaylightName()
@@ -196,12 +213,45 @@ namespace FlowUtilities
         }
 
         /// <summary>
+        /// The IsDaylightSavingTime property of the currently selected TimeZoneInfo
+        /// </summary>
+        /// <returns>true if Daylight Savings is in effect</returns>
+        public bool IsDaylightSavingTime(DateTime dateTime)
+        {
+            if (pos < list.Count)
+                return list[pos].IsDaylightSavingTime(dateTime);
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Id of the Local TimeZone
         /// </summary>
         /// <returns>The TimeZoneInfo Id for the Local timezone</returns>
         public string LocalId()
         {
             return TimeZoneInfo.Local.Id;
+        }
+
+        /// <summary>
+        /// The GetUtcOffset property of the Local TimeZoneInfo for the specified time
+        /// </summary>
+        /// <param name="dateTime">the specified time in the Local timezone to get the offset for</param>
+        /// <returns>total offset in minutes</returns>
+        public float GetLocalUtcOffset(DateTime dateTime)
+        {
+            TimeSpan offset = TimeZoneInfo.Local.GetUtcOffset(dateTime);
+            return offset.Hours * 60 + offset.Minutes;
+        }
+
+        /// <summary>
+        /// The IsDaylightSavingTime property of the Local TimeZoneInfo for the specified time
+        /// </summary>
+        /// <param name="dateTime">the specified time in the Local timezone to be checked</param>
+        /// <returns>true if Daylight Savings is in effect</returns>
+        public bool LocalIsDaylightSavingTime(DateTime dateTime)
+        {
+            return TimeZoneInfo.Local.IsDaylightSavingTime(dateTime);
         }
 
         /// <summary>
