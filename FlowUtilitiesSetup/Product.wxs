@@ -64,6 +64,7 @@
 				<File Id="FlowUtilities.pdb" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.pdb" />
 				<File Id="FlowUtilities.XML" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.XML" />
         <File Id="FlowUtilities.dll" Source="$(var.FlowUtilities.TargetDir)FlowUtilities.dll" />
+        <File Id="BouncyCastle.Crypto.dll" Source="$(var.FlowUtilities.TargetDir)BouncyCastle.Crypto.dll" />
         <File Id="FlowUtilities.inc" Source="$(var.SolutionDir)\Script\FlowUtilities.inc">
           <CopyFile Id="Includes" DestinationDirectory="Script"/>
         </File>
