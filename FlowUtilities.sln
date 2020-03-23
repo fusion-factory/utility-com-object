@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostBuildStep", "PostBuildS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cmd", "Cmd", "{0A611597-B56F-4E46-B299-72C8CA35350E}"
 	ProjectSection(SolutionItems) = preProject
+		Cmd\FlowUtilitiesManualRegister.bat = Cmd\FlowUtilitiesManualRegister.bat
+		Cmd\FlowUtilitiesManualRemove.bat = Cmd\FlowUtilitiesManualRemove.bat
 		Cmd\FlowUtilitiesSetup.bat = Cmd\FlowUtilitiesSetup.bat
 	EndProjectSection
 EndProject

@@ -65,8 +65,15 @@ namespace FlowUtilitiesCustomActionsLibrary {
 				p.StartInfo = startInfo;
 				p.Start();
 				p.WaitForExit();
-				session.Log("Successfully registered "+strDllPathName+". ExitCode="+p.ExitCode.ToString());
-			}
+                if (p.ExitCode == 0)
+				    session.Log("Successfully registered "+strDllPathName+". ExitCode="+p.ExitCode.ToString());
+                else
+                {
+                    session.Log("Failed to execute [" + startInfo.FileName + " " + startInfo.Arguments + "]. ExitCode=" + p.ExitCode.ToString());
+                    MessageBox.Show("Failed to execute [" + startInfo.FileName + " " + startInfo.Arguments + "]. ExitCode=" + p.ExitCode.ToString(), "Failed to register", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return ActionResult.Failure;
+                }
+            }
 			catch(Exception e){
 				session.Log("Failed to execute ["+startInfo.FileName+" "+startInfo.Arguments+"]. ExitCode="+p.ExitCode.ToString()+", Error: "+e.Message);
 				MessageBox.Show("Failed to execute ["+startInfo.FileName+" "+startInfo.Arguments+"], Error: "+e.Message,"Failed to register",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -79,8 +86,15 @@ namespace FlowUtilitiesCustomActionsLibrary {
 			object objComTest=null;
 			try{
 				typComTest=Type.GetTypeFromProgID("FlowUtilities.Helper");
-				session.Log("Successfully initialized FlowUtilities.Helper.");
-			}
+                if (typComTest != null)
+				    session.Log("Successfully initialized FlowUtilities.Helper.");
+                else
+                {
+                    session.Log("Failed to initialize FlowUtilities.Helper. ERROR: GetTypeFromProgID is null");
+                    MessageBox.Show("Failed to initialize FlowUtilities.Helper. ERROR: GetTypeFromProgID is null", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return ActionResult.Failure;
+                }
+            }
 			catch(Exception e){
 				session.Log("Failed to initialize FlowUtilities.Helper. ERROR: "+e.Message);
 				MessageBox.Show("Failed to initialize FlowUtilities.Helper. ERROR: "+e.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);

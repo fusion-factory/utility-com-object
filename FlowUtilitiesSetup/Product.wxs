@@ -68,6 +68,9 @@
         <File Id="FlowUtilities.inc" Source="$(var.SolutionDir)\Script\FlowUtilities.inc">
           <CopyFile Id="Includes" DestinationDirectory="Script"/>
         </File>
+        <File Id="FlowUtilitiesManualRegister.bat" Source="$(var.SolutionDir)\Cmd\FlowUtilitiesManualRegister.bat" />
+        <File Id="FlowUtilitiesManualRemove.bat" Source="$(var.SolutionDir)\Cmd\FlowUtilitiesManualRemove.bat" />
+        <File Id="FlowUtilitiesDocumentation.chm" Source="$(var.SolutionDir)\FlowUtilitiesDocumentation\Help\FlowUtilitiesDocumentation.chm" />
         <!--File Id="FlowUtilitiesInitializationTest.vbs" Source="..\FlowUtilities\bin\Debug\FlowUtilitiesInitializationTest.vbs" /-->
 			</Component>
 		</ComponentGroup>
