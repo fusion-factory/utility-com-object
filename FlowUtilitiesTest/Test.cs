@@ -19,6 +19,37 @@ namespace FlowUtilitiesTest {
         const String tokenKey = "TCcPw1eTIP3jtf2SBWFhZQ==";
 
         private void Test_Load(object sender,EventArgs e) {
+            bool result = false;
+            int returnCode = 0;
+            string returnMessage = "";
+            string returnRelativeFileName = "";
+
+            string textToHash = "pin=0957&shop=gaz-man.myshopify.com&path_prefix=%2Fapps%2Ffusion&timestamp=1586411030&signature=3c85aefca5f1805d3d5f5b04793133a664bf216fc15d159da997f501e777e632";
+            //string secret = "c58c23e1be160288652e3ac1ce81aecf";
+            string secret = "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";
+
+            //FlowUtilities.PGP pgp = new FlowUtilities.PGP();
+            //result = pgp.FileEncrypt("C:\\temp\\PGP\\Decrypted\\Order1045.xml", "C:\\temp\\PGP\\Encrypted\\Order1045_fixed.xml.pgp", "C:\\temp\\PGP\\Keys\\CB_Dummy_pub.asc", true);
+            //returnCode = pgp.ReturnCode();
+            //returnMessage = pgp.ReturnMessage();
+            //returnRelativeFileName = pgp.GetRelativeFileName();
+
+            //FlowUtilities.PGP pgp = new FlowUtilities.PGP();
+            //pgp.FileDecrypt("C:\\temp\\PGP\\Encrypted\\EMPLOYEES_Full.csv.pgp", "C:\\temp\\PGP\\Encrypted\\EMPLOYEES_Full.csv", "C:\\temp\\PGP\\Keys\\CB_Dummy_private.asc", "", " ");
+
+            ShopifyProxy prox = new ShopifyProxy();
+
+
+            if (prox.Authenticate(textToHash, secret))
+                secret = "success!";
+            else
+                secret = "false!";
+
+            Encryption enc = new Encryption();
+            AsymmetricAlgorithm asym = enc.ImportRSAPrivateKey("C:\\temp\\PGP\\Keys\\CB_Dummy_private.p12", "");
+
+            return;
+
             Encryption E = new Encryption();
             /*
             string original = "{\"active\":\"true\"}";

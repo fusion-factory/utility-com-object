@@ -20,6 +20,7 @@ namespace FlowUtilities
     {
         private int _returnCode;
         private string _returnMessage;
+        private string _relativeFileName = "";
 
         public PGP()
         {
@@ -390,11 +391,15 @@ namespace FlowUtilities
                 if (CompressionAlgorithm != (int)enumCompressionAlgorithm.Uncompressed)
                 {
                     PgpCompressedDataGenerator comData = new PgpCompressedDataGenerator((CompressionAlgorithmTag)CompressionAlgorithm);
-                    WriteStream(comData.Open(@out), FileTypeToPgpChar((int)FileType), inputStream, GetFileName(inputStream));
+                    //WriteStream(comData.Open(@out), FileTypeToPgpChar((int)FileType), inputStream, GetFileName(inputStream));
+                    WriteStream(comData.Open(@out), FileTypeToPgpChar((int)FileType), inputStream, GetRelativeFileName(inputStream));
                     comData.Close();
                 }
                 else
-                    WriteStream(@out, FileTypeToPgpChar((int)FileType), inputStream, GetFileName(inputStream));
+                {
+                    //WriteStream(@out, FileTypeToPgpChar((int)FileType), inputStream, GetFileName(inputStream));
+                    WriteStream(@out, FileTypeToPgpChar((int)FileType), inputStream, GetRelativeFileName(inputStream));
+                }
 
                 PgpEncryptedDataGenerator pk = new PgpEncryptedDataGenerator((SymmetricKeyAlgorithmTag)SymmetricKeyAlgorithm, checkIntegrity, new SecureRandom());
                 pk.AddMethod(ReadPublicKey(pkStream));
@@ -437,6 +442,13 @@ namespace FlowUtilities
 
             this._returnMessage = SetMessage((int)enumReturnCode.Success);
             return true;
+        }
+
+        /// <summary>This method check the relative filename, for debugging purpose.
+        /// </summary>
+        public string GetRelativeFileName()
+        {
+            return this._relativeFileName;
         }
 
         private void Decrypt(Stream inputStream, Stream outputStream, Stream privateKeyStream, string passwordPhrase)
@@ -692,6 +704,15 @@ namespace FlowUtilities
                 return "name";
 
             return ((FileStream)stream).Name;
+        }
+
+        private string GetRelativeFileName(Stream stream)
+        {
+            if (stream == null || !(stream is FileStream))
+                return "name";
+
+            this._relativeFileName = Path.GetFileName(((FileStream)stream).Name);
+            return this._relativeFileName;
         }
 
         private char FileTypeToPgpChar(int fileType)
